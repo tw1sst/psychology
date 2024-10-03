@@ -13,6 +13,7 @@
     </div>
 
     <div class="header__right">
+      <ui-button type="default" @click="console.log('click 1')">+7 (920) 360-26-54</ui-button>
       <ui-button type="primary" @click="console.log('click 1')">Записаться</ui-button>
     </div>
   </div>
@@ -20,8 +21,12 @@
 
 
 <script setup lang="ts">
+import { useMediaQuery } from '@vueuse/core'
 import logo from '~/assets/img/logo.png'
 
+const md = useMediaQuery('(min-width: 767px)')
+const lg = useMediaQuery('(min-width: 1024px)')
+const xl = useMediaQuery('(min-width: 1280px)')
 const menuItems = ref([
   {
     id: 1,
@@ -63,6 +68,9 @@ const menuItems = ref([
   background: white;
   display: flex;
   font-size: 14px;
+  position: fixed;
+  z-index: 99;
+  top: 0;
   &__nav {
     display: flex;
     align-items: center;
@@ -70,6 +78,7 @@ const menuItems = ref([
     gap: 40px;
     &-item {
       &:hover {
+        opacity: 0.8;
         cursor: pointer;
       }
     }
@@ -92,8 +101,7 @@ const menuItems = ref([
     justify-content: center;
     align-items: center;
     margin: 0 20px;
-    max-width: 200px;
-    width: 100%;
+    width: auto;
   }
 }
 </style>
