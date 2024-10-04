@@ -1,10 +1,11 @@
 <template>
   <div class="header">
     <div class="header__left">
-      <span>Я ОКЕЙ</span>
+      <span class="header__left-logo" @click="navigateTo({ name: 'index' })">Я ОКЕЙ</span>
+      <span class="header__left-text">центр ментального<br>здоровья</span>
     </div>
 
-    <div class="header__center">
+    <div class="header__center" v-if="md">
       <ul class="header__nav">
         <li class="header__nav-item" v-for="item in menuItems" :key="item.id">
           {{ item.title }}
@@ -13,7 +14,7 @@
     </div>
 
     <div class="header__right">
-      <ui-button type="default" @click="console.log('click 1')">+7 (920) 360-26-54</ui-button>
+      <ui-button v-if="lg" type="default" @click="console.log('click 1')">+7 (920) 360-26-54</ui-button>
       <ui-button type="primary" @click="console.log('click 1')">Записаться</ui-button>
     </div>
   </div>
@@ -58,6 +59,11 @@ const menuItems = ref([
     title: 'Блог',
     path: 'blog'
   },
+  {
+    id: 7,
+    title: 'Помощь',
+    path: 'help'
+  },
 ])
 </script>
 
@@ -70,26 +76,49 @@ const menuItems = ref([
   font-size: 14px;
   position: fixed;
   z-index: 99;
+  justify-content: space-between;
   top: 0;
   &__nav {
     display: flex;
     align-items: center;
     height: 100%;
-    gap: 40px;
     &-item {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+      transition: 0.3s;
+      white-space: nowrap;
       &:hover {
         opacity: 0.8;
         cursor: pointer;
+        border-bottom: 4px solid #3D4E5C;
       }
     }
   }
   &__left {
-    max-width: 200px;
+    max-width: 275px;
+    margin: 0 20px;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 700;
+    gap: 10px;
+    color: #3D4E5C;
+    &-text {
+      font-size: 14px;
+      line-height: 14px;
+      font-weight: 500;
+    }
+    &-logo {
+      cursor: pointer;
+      font-size: 24px;
+      white-space: nowrap;
+      font-weight: 500;
+      border-right: 2px solid #3D4E5C;
+      padding-right: 10px;
+    }
   }
   &__center {
     width: 100%;
