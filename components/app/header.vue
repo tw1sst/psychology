@@ -5,7 +5,7 @@
       <span class="header__left-text">центр ментального<br>здоровья</span>
     </div>
 
-    <div class="header__center" v-if="md">
+    <div class="header__center" v-show="md">
       <ul class="header__nav">
         <li class="header__nav-item" v-for="item in menuItems" :key="item.id">
           {{ item.title }}
@@ -14,8 +14,8 @@
     </div>
 
     <div class="header__right">
-      <ui-button v-if="lg" type="default" @click="console.log('click 1')">+7 (920) 360-26-54</ui-button>
-      <ui-button type="primary" @click="console.log('click 1')">Записаться</ui-button>
+      <ui-button v-show="lg" type="default" text="+7 (920) 360-26-54" />
+      <ui-button type="primary" text="Записаться" />
     </div>
   </div>
 </template>
@@ -25,10 +25,16 @@
 import { useMediaQuery } from '@vueuse/core'
 import logo from '~/assets/img/logo.png'
 
+interface menuItem {
+  id: number,
+  title: string,
+  path: string,
+}
+
 const md = useMediaQuery('(min-width: 767px)')
 const lg = useMediaQuery('(min-width: 1024px)')
 const xl = useMediaQuery('(min-width: 1280px)')
-const menuItems = ref([
+const menuItems = ref<Array<menuItem>>([
   {
     id: 1,
     title: 'Главная',

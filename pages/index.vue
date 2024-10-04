@@ -14,7 +14,7 @@
           <div class="content__info-subtext">Где наука встречается с душой</div>
 
           <div>
-            <ui-button type="primary">Записаться на бесплатный сеанс</ui-button>
+            <ui-button type="primary" text="Записаться на бесплатный сеанс" />
           </div>
         </div>
       </div>
@@ -41,13 +41,12 @@ import Logo from '~/assets/img/logo.png'
   height: 100vh;
   &__info {
     width: 100%;
-    height: 50%;
     position: absolute;
     top: 15rem;
     display: flex;
     justify-content: center;
     &-logo {
-      max-height: 50%;
+      max-height: 200px;
     }
     &-block {
       color: #3D4E5C;
@@ -61,7 +60,7 @@ import Logo from '~/assets/img/logo.png'
       align-items: center;
       gap: 20px;
       justify-content: center;
-      padding: 20px;
+      padding: 40px 20px;
       text-align: center;
     }
     &-subtext {

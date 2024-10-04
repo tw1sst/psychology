@@ -1,12 +1,13 @@
 <template>
-  <button class="button" :class="buttonTypeClass">
-    <slot />
-  </button>
+  <div>
+    <input type="button" class="button" :value="text" :class="buttonTypeClass">
+  </div>
 </template>
 
 <script lang="ts" setup>
 const props = defineProps<{
   type: 'primary' | 'default',
+  text: string
 }>()
 
 const buttonTypeClass = computed(() => {
