@@ -5,6 +5,8 @@
     <div class="slot">
       <slot/>
     </div>
+
+    <app-footer />
   </div>
 </template>
 

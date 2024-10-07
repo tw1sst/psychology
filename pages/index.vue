@@ -19,15 +19,6 @@
         </div>
       </div>
     </div>
-
-
-    <div class="aboutUs">
-
-    </div>
-
-    index page
-
-    <NuxtLink :to="{ name: 'about' }">О нас</NuxtLink>
   </div>
 </template>
 
@@ -38,7 +29,6 @@ import Logo from '~/assets/img/logo.png'
 
 <style scoped lang="scss">
 .content {
-  height: 100vh;
   &__info {
     width: 100%;
     position: absolute;

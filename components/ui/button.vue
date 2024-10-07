@@ -19,10 +19,11 @@ const buttonTypeClass = computed(() => {
 <style scoped lang="scss">
 .button {
   border-radius: 5px;
-  padding: 10px 20px;
+  padding: 10px 30px;
   font-size: 14px;
   white-space: nowrap;
   transition: 0.3s;
+  cursor: pointer;
   &:hover {
     opacity: 0.8;
   }
