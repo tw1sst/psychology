@@ -76,6 +76,7 @@ const menuItems = ref<Array<menuItem>>([
 <style scoped lang="scss">
 .header {
   height: 50px;
+  padding: 0 100px;
   width: 100vw;
   background: white;
   display: flex;
@@ -84,10 +85,16 @@ const menuItems = ref<Array<menuItem>>([
   z-index: 99;
   justify-content: space-between;
   top: 0;
+  @media (max-width: 1300px) {
+    padding: 0 20px;
+  }
   &__nav {
     display: flex;
     align-items: center;
     height: 100%;
+    @media (max-width: 1100px) {
+      display: none;
+    }
     &-item {
       height: 100%;
       display: flex;
@@ -104,11 +111,9 @@ const menuItems = ref<Array<menuItem>>([
   }
   &__left {
     max-width: 275px;
-    margin: 0 20px;
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
     font-weight: 700;
     gap: 10px;
     color: #3D4E5C;
@@ -116,6 +121,9 @@ const menuItems = ref<Array<menuItem>>([
       font-size: 14px;
       line-height: 14px;
       font-weight: 500;
+      @media (max-width: 500px) {
+        font-size: 12px;
+      }
     }
     &-logo {
       cursor: pointer;
@@ -124,6 +132,9 @@ const menuItems = ref<Array<menuItem>>([
       font-weight: 500;
       border-right: 2px solid #3D4E5C;
       padding-right: 10px;
+      @media (max-width: 500px) {
+        font-size: 20px;
+      }
     }
   }
   &__center {
@@ -132,10 +143,10 @@ const menuItems = ref<Array<menuItem>>([
     justify-content: center;
   }
   &__right {
+    max-width: 275px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 20px;
     width: auto;
   }
 }

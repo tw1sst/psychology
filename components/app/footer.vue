@@ -18,9 +18,9 @@
 
         <div class="footer__feedback-text">Мы свяжемся с вами максимально бытсро</div>
 
-        <input class="footer__feedback-form" type="tel" placeholder="Номер телефона" />
+        <input class="footer__feedback-form" type="tel" placeholder="Введите номер телефона" />
 
-        <ui-button type="primary" text="Записаться" />
+        <ui-button type="primary" text="Записаться сейчас" />
       </div>
     </div>
 
@@ -126,12 +126,18 @@ const menuItems = ref<Array<menuItem>>([
       &::placeholder {
         color: #30545A;
       }
+      @media (max-width: 500px) {
+        width: 100%;
+      }
     }
   }
   &__nav {
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
+    border-top: 2px solid #30545A;
+    border-bottom: 2px solid #30545A;
+    padding: 20px 0;
     @media (max-width: 500px) {
       justify-content: center;
     }
