@@ -1,34 +1,35 @@
 <template>
-  <div class="footer footer__container">
-    <div class="footer__head">
-      <div class="footer__logo">
-        <img :src="logo" alt="logo" class="footer__logo-img" />
+  <div class="footer">
+    <div class="footer__container">
+      <div class="footer__head">
+        <div class="footer__logo">
+          <img :src="logo" alt="logo" class="footer__logo-img" />
+        </div>
+
+        <div class="footer__actions">
+          <ul class="footer__nav">
+            <li class="footer__nav-item" v-for="item in menuItems" :key="item.id">
+              {{ item.title }}
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer__feedback">
+          <div class="footer__feedback-title">Оставьте заявку прямо сейчас!</div>
+
+          <div class="footer__feedback-text">Мы свяжемся с вами максимально бытсро</div>
+
+          <input class="footer__feedback-form" type="tel" placeholder="Введите номер телефона" />
+
+          <ui-button type="primary" text="Записаться сейчас" />
+        </div>
       </div>
 
-      <div class="footer__actions">
-        <ul class="footer__nav">
-          <li class="footer__nav-item" v-for="item in menuItems" :key="item.id">
-            {{ item.title }}
-          </li>
-        </ul>
-      </div>
-
-      <div class="footer__feedback">
-        <div class="footer__feedback-title">Оставьте заявку прямо сейчас!</div>
-
-        <div class="footer__feedback-text">Мы свяжемся с вами максимально бытсро</div>
-
-        <input class="footer__feedback-form" type="tel" placeholder="Введите номер телефона" />
-
-        <ui-button type="primary" text="Записаться сейчас" />
+      <div class="footer__bottom">
+        <div>Центр ментального здоровья в Ростове-на-Дону</div>
+        <div>Я ОКЕЙ - Copyright © 2024</div>
       </div>
     </div>
-
-    <div class="footer__bottom">
-      <div>Центр ментального здоровья в Ростове-на-Дону</div>
-      <div>Я ОКЕЙ - Copyright © 2024</div>
-    </div>
-
   </div>
 </template>
 
@@ -90,7 +91,7 @@ const menuItems = ref<Array<menuItem>>([
     padding: 20px;
   }
   &__container {
-    max-width: 1300px;
+    max-width: 1100px;
     width: 100%;
     margin: 0 auto;
   }

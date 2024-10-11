@@ -22,6 +22,14 @@
       </div>
     </div>
 
+    <div class="partners">
+      <div class="container">
+        <div class="partners__title">Наши клиенты</div>
+
+        <img :src="Partners">
+      </div>
+    </div>
+
     <div class="aboutUs">
       <div class="aboutUs__container">
         <div class="aboutUs__content">
@@ -50,6 +58,7 @@
         </div>
       </div>
     </div>
+
   </div>
 </template>
 
@@ -58,10 +67,18 @@ import { ref } from 'vue'
 import BgVideo from '~/assets/img/bg-cover3.mp4'
 import Logo from '~/assets/img/logo.png'
 import Person1 from '~/assets/img/person1.png'
+import Partners from '~/assets/img/partners.png'
 // const footer = useTemplateRef('footer')
 </script>
 
 <style scoped lang="scss">
+.container {
+  height: auto;
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+}
+
 .content {
   &__info {
     width: 100%;
@@ -155,7 +172,10 @@ import Person1 from '~/assets/img/person1.png'
     justify-content: space-between;
     flex-direction: column;
     &-title {
-      font-size: 22px;
+      font-size: 26px;
+      @media (max-width: 500px) {
+        font-size: 22px;
+      }
     }
     &-separator {
       width: 100%;
@@ -175,6 +195,18 @@ import Person1 from '~/assets/img/person1.png'
       @media (max-width: 500px) {
         gap: 10px;
       }
+    }
+  }
+}
+
+.partners {
+  margin: 20px 0;
+  &__title {
+    font-size: 26px;
+    text-align: center;
+    margin-bottom: 40px;
+    @media (max-width: 500px) {
+      font-size: 22px;
     }
   }
 }

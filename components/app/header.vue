@@ -138,7 +138,7 @@ const menuItems = ref<Array<menuItem>>([
     }
   }
   &__left {
-    max-width: 275px;
+    max-width: 300px;
     width: 100%;
     display: flex;
     align-items: center;
@@ -177,7 +177,7 @@ const menuItems = ref<Array<menuItem>>([
     justify-content: center;
   }
   &__right {
-    max-width: 275px;
+    max-width: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
