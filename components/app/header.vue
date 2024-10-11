@@ -1,6 +1,12 @@
 <template>
   <div class="header">
     <div class="header__left">
+      <div class="header__hamburger">
+        <div class="header__hamburger-line"></div>
+        <div class="header__hamburger-line"></div>
+        <div class="header__hamburger-line"></div>
+      </div>
+
       <span class="header__left-logo" @click="navigateTo({ name: 'index' })">Я ОКЕЙ</span>
       <span class="header__left-text">центр ментального<br>здоровья</span>
     </div>
@@ -86,13 +92,32 @@ const menuItems = ref<Array<menuItem>>([
   justify-content: space-between;
   top: 0;
   @media (max-width: 1300px) {
-    padding: 0 20px;
+    padding: 0 10px;
+  }
+  &__hamburger {
+    width: 25px;
+    height: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    gap: 5px;
+    @media (min-width: 1100px) {
+      display: none;
+    }
+    &-line {
+      width: 100%;
+      height: 3px;
+      border-radius: 2px;
+      background-color: #30545A;
+    }
   }
   &__nav {
     display: flex;
     align-items: center;
     height: 100%;
-    @media (max-width: 1100px) {
+    @media (max-width: 900px) {
       display: none;
     }
     &-item {
@@ -102,6 +127,9 @@ const menuItems = ref<Array<menuItem>>([
       padding: 0 20px;
       transition: 0.3s;
       white-space: nowrap;
+      @media (max-width: 1200px) {
+        padding: 0 10px;
+      }
       &:hover {
         opacity: 0.8;
         cursor: pointer;
@@ -115,14 +143,18 @@ const menuItems = ref<Array<menuItem>>([
     display: flex;
     align-items: center;
     font-weight: 700;
-    gap: 10px;
+    gap: 20px;
     color: #3D4E5C;
+    @media (max-width: 500px) {
+      gap: 10px;
+    }
     &-text {
       font-size: 14px;
       line-height: 14px;
       font-weight: 500;
       @media (max-width: 500px) {
         font-size: 12px;
+        line-height: 12px;
       }
     }
     &-logo {
@@ -134,6 +166,8 @@ const menuItems = ref<Array<menuItem>>([
       padding-right: 10px;
       @media (max-width: 500px) {
         font-size: 20px;
+        border-right: none;
+        padding-right: 0;
       }
     }
   }

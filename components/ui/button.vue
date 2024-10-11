@@ -6,12 +6,18 @@
 
 <script lang="ts" setup>
 const props = defineProps<{
-  type: 'primary' | 'default',
+  type: 'primary' | 'default' | 'primary-outlined',
   text: string
 }>()
 
 const buttonTypeClass = computed(() => {
-  return props.type === 'primary' ? 'button__primary' : 'button__default'
+  if (props.type === 'primary') {
+    return 'button__primary'
+  } else if (props.type === 'default') {
+    return 'button__default'
+  } else if (props.type === 'primary-outlined') {
+    return 'button__primaryOutlined'
+  }
 })
 
 </script>
@@ -24,6 +30,9 @@ const buttonTypeClass = computed(() => {
   white-space: nowrap;
   transition: 0.3s;
   cursor: pointer;
+  @media (max-width: 500px) {
+    padding: 10px;
+  }
   &:hover {
     opacity: 0.8;
   }
@@ -34,6 +43,10 @@ const buttonTypeClass = computed(() => {
   &__default {
     color: black;
     background-color: none;
+  }
+  &__primaryOutlined {
+    color: #30545A;
+    border: 2px solid #30545A;
   }
 }
 </style>

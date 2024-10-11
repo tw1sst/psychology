@@ -85,6 +85,7 @@ const menuItems = ref<Array<menuItem>>([
   height: auto;
   background: white;
   padding: 40px 100px;
+  z-index: 999;
   @media (max-width: 500px) {
     padding: 20px;
   }
