@@ -69,6 +69,7 @@ import Person1 from '~/assets/img/person1.png'
     top: 15rem;
     display: flex;
     justify-content: center;
+    left: 0;
     &-logo {
       max-height: 200px;
     }
@@ -87,6 +88,9 @@ import Person1 from '~/assets/img/person1.png'
       justify-content: center;
       padding: 40px 20px;
       text-align: center;
+      @media (max-width: 500px) {
+        border-radius: 0px;
+      }
     }
     &-text {
       font-size: 26px;
@@ -95,11 +99,15 @@ import Person1 from '~/assets/img/person1.png'
   &__bg {
     width: 100vw;
     height: 800px;
-    border-radius: 20px;
+    padding: 0 20px;
     overflow: hidden;
+    @media (max-width: 500px) {
+      padding: 0 10px;
+    }
     &-video {
       width: 100%;
       height: 100%;
+      border-radius: 20px;
       object-fit: cover;
     }
   }
@@ -138,7 +146,7 @@ import Person1 from '~/assets/img/person1.png'
       max-width: 450px;
       width: 100%;
       height: 100%;
-      border-radius: 10px;
+      border-radius: 20px;
     }
   }
   &__right {
