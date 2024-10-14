@@ -14,15 +14,15 @@
           </ul>
         </div>
 
-        <div class="footer__feedback">
-          <div class="footer__feedback-title">Оставьте заявку прямо сейчас!</div>
+<!--        <div class="footer__feedback">-->
+<!--          <div class="footer__feedback-title">Оставьте заявку прямо сейчас!</div>-->
 
-          <div class="footer__feedback-text">Мы свяжемся с вами максимально бытсро</div>
+<!--          <div class="footer__feedback-text">Мы свяжемся с вами максимально бытсро</div>-->
 
-          <input class="footer__feedback-form" type="tel" placeholder="Введите номер телефона" />
+<!--          <input class="footer__feedback-form" type="tel" placeholder="Введите номер телефона" />-->
 
-          <ui-button type="primary" text="Записаться сейчас" />
-        </div>
+<!--          <ui-button type="primary" text="Записаться сейчас" />-->
+<!--        </div>-->
       </div>
 
       <div class="footer__bottom">
@@ -91,7 +91,7 @@ const menuItems = ref<Array<menuItem>>([
     padding: 20px;
   }
   &__container {
-    max-width: 1100px;
+    max-width: 1200px;
     width: 100%;
     margin: 0 auto;
   }
@@ -137,8 +137,6 @@ const menuItems = ref<Array<menuItem>>([
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
-    border-top: 2px solid #30545A;
-    border-bottom: 2px solid #30545A;
     padding: 20px 0;
     @media (max-width: 500px) {
       justify-content: center;
@@ -152,12 +150,12 @@ const menuItems = ref<Array<menuItem>>([
     width: 150px;
     &-img {
       display: block;
-      width: 150px;
-      height: 150px;
+      width: 100px;
+      height: 100px;
     }
   }
   &__bottom {
-    margin-top: 40px;
+    margin-top: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;

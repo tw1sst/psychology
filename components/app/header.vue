@@ -103,7 +103,7 @@ const menuItems = ref<Array<menuItem>>([
     align-items: center;
     cursor: pointer;
     gap: 5px;
-    @media (min-width: 1100px) {
+    @media (min-width: 1200px) {
       display: none;
     }
     &-line {

@@ -22,41 +22,43 @@
       </div>
     </div>
 
-    <div class="partners">
-      <div class="container">
-        <div class="partners__title">Наши клиенты</div>
-
-        <img :src="Partners">
-      </div>
-    </div>
-
     <div class="aboutUs">
       <div class="aboutUs__container">
+        <div class="aboutUs__title">Подробнее о нас</div>
+
         <div class="aboutUs__content">
           <div class="aboutUs__left">
-            <img alt="Person" class="aboutUs__left-person" :src="Person1">
+            <img alt="Person" class="aboutUs__left-person" :src="Group1">
           </div>
 
           <div class="aboutUs__right">
-            <div class="aboutUs__right-title">Подробнее о нас</div>
-
-            <div class="aboutUs__right-separator"></div>
-
             <div class="aboutUs__right-text">
-              Мы занимаемся групповой психотерапевтической практикой в центре Ростова-на-Дону. Мы сочетаем методы лечения, основанные на фактических данных, общение с людьми и непринужденную обстановку, чтобы предложить инклюзивный и индивидуальный подход.
-              Наша квалифицированная команда предлагает помощь в сообществе, включая терапевтические услуги для подростков (14+) и взрослых, а также корпоративные оздоровительные программы и поддержку в области психического здоровья на месте. Независимо от того, ищете ли вы услуги и ресурсы для себя, любимого человека или сотрудников, мы поможем вам.
+              Мы – центр ментального здоровья "Я Окей".<br><br>
+
+              Специализируемся на индивидуальной
+              психотерапевтической практике в Ростове-на-Дону. Мы сочетаем научно обоснованное методы
+              терапии, доброжелательное общение и непринужденную обстановку, чтобы осуществить
+              индивидуальный подход.
+              Наш квалифицированный тандем предлагает психологически услуги для взрослых. Независимо от
+              того, ищете ли вы услуги для себя, любимого человека или сотрудников, мы поможем вам.
             </div>
 
-            <div class="aboutUs__right-separator"></div>
+<!--            <div class="aboutUs__right-actions">-->
+<!--              <ui-button type="primary" text="Записаться прямо сейчас" />-->
 
-            <div class="aboutUs__right-actions">
-              <ui-button type="primary" text="Записаться прямо сейчас" />
-
-              <ui-button type="primary-outlined" text="Подробнее" />
-            </div>
+<!--              <ui-button type="primary-outlined" text="Подробнее" />-->
+<!--            </div>-->
           </div>
         </div>
       </div>
+    </div>
+
+    <div class="supportAs">
+      <div class="supportAs__title">Осуществляем поддержку в следующих вопросах</div>
+
+      <UCarousel ref="carouselRef" v-slot="{ item }" :items="supportAsItems" class="supportAs__items">
+        <div class="supportAs__items-item">{{ item.title }}</div>
+      </UCarousel>
     </div>
 
   </div>
@@ -66,17 +68,88 @@
 import { ref } from 'vue'
 import BgVideo from '~/assets/img/bg-cover3.mp4'
 import Logo from '~/assets/img/logo.png'
-import Person1 from '~/assets/img/person1.png'
-import Partners from '~/assets/img/partners.png'
-// const footer = useTemplateRef('footer')
+import Group1 from '~/assets/img/group1.jpg'
+const pageYOffset = ref<number>(0)
+const carouselRef = ref()
+
+const supportAsItems = [
+  { id: 1, title: 'тревожные состояния' },
+  { id: 2, title: 'депрессия, подавленность, безвыходность, одиночество' },
+  { id: 3, title: 'избавление от созависимости' },
+  { id: 4, title: 'семейные проблемы, конфликты, разводы' },
+  { id: 5, title: 'проблемы с сексуальными, интимными отношениями' },
+  { id: 6, title: 'вина' },
+  { id: 7, title: 'ревность' },
+  { id: 8, title: 'неуверенность в себе (Негативная самооценка)' },
+  { id: 9, title: 'поиск себя, обретение смысла жизни' },
+  { id: 10, title: 'самореализация в профессиональной сфере, поиск подходящей работы' },
+  { id: 11, title: 'трудности принятия решений, сомнения' },
+  { id: 12, title: 'проблемы с достижением целей' },
+  { id: 13, title: 'вопросы связанные с воспитанием детей' },
+  { id: 14, title: 'поддержка беременных и молодых мам' },
+  { id: 15, title: 'перемены в жизни' },
+  { id: 16, title: 'травма' },
+]
+
+const handleScroll = (event: any) => {
+  // && (pageYOffset.value % 30 === 0 || pageYOffset.value % 30 === 0.5)
+  if (pageYOffset.value > window.pageYOffset) {
+    carouselRef.value.next()
+  } else {
+    carouselRef.value.prev()
+  }
+  pageYOffset.value = window.pageYOffset
+}
+
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll)
+})
+
+onUnmounted (() => {
+  window.removeEventListener('scroll', handleScroll)
+})
 </script>
 
 <style scoped lang="scss">
 .container {
   height: auto;
-  max-width: 1100px;
+  max-width: 1200px;
   width: 100%;
   margin: 0 auto;
+}
+
+.supportAs {
+  padding: 40px 0;
+  &__title {
+    font-size: 26px;
+    padding-bottom: 40px;
+    text-align: center;
+    @media (max-width: 500px) {
+      font-size: 22px;
+      padding-bottom: 20px;
+    }
+  }
+  &__items {
+    display: flex;
+    gap: 20px;
+    &-item {
+      padding: 5px 20px;
+      margin: 0 10px;
+      background-color: #EAEAEB;
+      border-radius: 10px;
+      width: 300px;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      @media (max-width: 500px) {
+        font-size: 14px;
+        width: 180px;
+        padding: 5px 10px;
+      }
+    }
+  }
 }
 
 .content {
@@ -106,7 +179,7 @@ import Partners from '~/assets/img/partners.png'
       padding: 40px 20px;
       text-align: center;
       @media (max-width: 500px) {
-        border-radius: 0px;
+        border-radius: 0;
       }
     }
     &-text {
@@ -115,16 +188,12 @@ import Partners from '~/assets/img/partners.png'
   }
   &__bg {
     width: 100vw;
-    height: 800px;
-    padding: 0 20px;
+    height: 100vh;
+    margin-top: -50px;
     overflow: hidden;
-    @media (max-width: 500px) {
-      padding: 0 10px;
-    }
     &-video {
       width: 100%;
       height: 100%;
-      border-radius: 20px;
       object-fit: cover;
     }
   }
@@ -139,7 +208,7 @@ import Partners from '~/assets/img/partners.png'
   }
   &__container {
     height: auto;
-    max-width: 1100px;
+    max-width: 1200px;
     width: 100%;
     margin: 0 auto;
   }
@@ -147,6 +216,7 @@ import Partners from '~/assets/img/partners.png'
     display: grid;
     grid-template-columns: auto 1fr;
     gap: 40px;
+    align-items: center;
     @media (max-width: 800px) {
       grid-template-columns: 1fr;
       gap: 20px;
@@ -160,10 +230,19 @@ import Partners from '~/assets/img/partners.png'
     display: flex;
     justify-content: center;
     &-person {
-      max-width: 450px;
+      max-width: 500px;
       width: 100%;
       height: 100%;
-      border-radius: 20px;
+      border-radius: 10px;
+    }
+  }
+  &__title {
+    font-size: 26px;
+    padding-bottom: 40px;
+    text-align: center;
+    @media (max-width: 500px) {
+      font-size: 22px;
+      padding-bottom: 20px;
     }
   }
   &__right {
@@ -171,12 +250,6 @@ import Partners from '~/assets/img/partners.png'
     gap: 20px;
     justify-content: space-between;
     flex-direction: column;
-    &-title {
-      font-size: 26px;
-      @media (max-width: 500px) {
-        font-size: 22px;
-      }
-    }
     &-separator {
       width: 100%;
       border-bottom: 2px solid #30545A;
