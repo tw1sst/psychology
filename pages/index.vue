@@ -22,17 +22,20 @@
       </div>
     </div>
 
-    <div class="aboutUs">
-      <div class="aboutUs__container">
-        <div class="aboutUs__title">Подробнее о нас</div>
+    <div class="about">
+      <div class="about__container">
+        <div class="about__title">
+          <span>Немного о нас:</span>
+          <img class="about__arrow" :src="Arrow2" alt="arrow2">
+        </div>
 
-        <div class="aboutUs__content">
-          <div class="aboutUs__left">
-            <img alt="Person" class="aboutUs__left-person" :src="Group1">
+        <div class="about__content">
+          <div class="about__left">
+            <img alt="Person" class="about__left-person" :src="Group1">
           </div>
 
-          <div class="aboutUs__right">
-            <div class="aboutUs__right-text">
+          <div class="about__right">
+            <div class="about__right-text">
               Мы – центр ментального здоровья "Я Окей".<br><br>
 
               Специализируемся на индивидуальной
@@ -43,22 +46,91 @@
               того, ищете ли вы услуги для себя, любимого человека или сотрудников, мы поможем вам.
             </div>
 
-<!--            <div class="aboutUs__right-actions">-->
-<!--              <ui-button type="primary" text="Записаться прямо сейчас" />-->
-
-<!--              <ui-button type="primary-outlined" text="Подробнее" />-->
-<!--            </div>-->
           </div>
         </div>
       </div>
     </div>
 
-    <div class="supportAs">
-      <div class="supportAs__title">Осуществляем поддержку в следующих вопросах</div>
+    <div class="support">
+      <div class="support__title">Осуществляем поддержку в следующих вопросах</div>
 
-      <UCarousel ref="carouselRef" v-slot="{ item }" :items="supportAsItems" class="supportAs__items">
-        <div class="supportAs__items-item">{{ item.title }}</div>
+      <UCarousel ref="carouselRef" v-slot="{ item }" :items="supportAsItems" class="support__items">
+        <div class="support__items-item">{{ item.title }}</div>
       </UCarousel>
+    </div>
+
+    <div class="steps">
+      <div class="container">
+        <div class="steps__grid">
+          <div>
+            <div class="steps__grid-item">
+              <div class="steps__grid-badge">1</div>
+
+              <span class="steps__grid-title">Посетите свою первую консультацию</span>
+
+              <span class="steps__grid-text">Выберите психолога с котором хотели бы работать.</span>
+            </div>
+          </div>
+
+          <div>
+            <div class="steps__grid-item">
+              <div class="steps__grid-badge">2</div>
+
+              <span class="steps__grid-title">Запишитесь на бесплатную консультацию</span>
+
+              <span class="steps__grid-text">Во время бесплатной 15-минутной консультации у вас будет возможность обсудить интересующие
+вас вопросы, узнать, какие услуги вам нужны, а также почувствовать контакт с клиентом.</span>
+            </div>
+          </div>
+
+          <div>
+            <div class="steps__grid-item">
+              <div class="steps__grid-badge">3</div>
+
+              <span class="steps__grid-title">Посетите свою первую психологическую консультацию.</span>
+
+              <span class="steps__grid-text">Мы договоримся о целях работы, процессе планирования встреч, о том как связываться с
+терапевтом и производить оплату.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="helping">
+      <div class="container">
+        <div class="helping__grid">
+          <div class="helping__grid-left">
+            <div>Осуществляем поддержку в следующих вопросах:</div>
+
+            <div class="helping__grid-bottom">
+              <img alt="arrow" :src="Arrow1" class="helping__grid-arrow">
+            </div>
+          </div>
+
+          <ul class="helping__grid-list">
+            <li>тревожные состояния;</li>
+            <li>депрессия, подавленность, безвыходность, одиночество;</li>
+            <li>избавление от созависимости;</li>
+            <li>семейные проблемы, конфликты, разводы;</li>
+            <li>проблемы с сексуальными, интимными отношениями;</li>
+            <li>вина;</li>
+            <li>ревность;</li>
+            <li>неуверенность в себе (Негативная самооценка);</li>
+            <li>поиск себя, обретение смысла жизни;</li>
+          </ul>
+
+          <ul class="helping__grid-list">
+            <li>самореализация в профессиональной сфере, поиск подходящей работы;</li>
+            <li>трудности принятия решений, сомнения;</li>
+            <li>проблемы с достижением целей;</li>
+            <li>вопросы связанные с воспитанием детей;</li>
+            <li>поддержка беременных и молодых мам;</li>
+            <li>перемены в жизни;</li>
+            <li>травма;</li>
+          </ul>
+        </div>
+      </div>
     </div>
 
   </div>
@@ -69,7 +141,8 @@ import { ref } from 'vue'
 import BgVideo from '~/assets/img/bg-cover3.mp4'
 import Logo from '~/assets/img/logo.png'
 import Group1 from '~/assets/img/group1.jpg'
-const pageYOffset = ref<number>(0)
+import Arrow1 from '~/assets/img/arrow1.jpg'
+import Arrow2 from '~/assets/img/arrow2.png'
 const carouselRef = ref()
 
 const supportAsItems = [
@@ -78,35 +151,27 @@ const supportAsItems = [
   { id: 3, title: 'избавление от созависимости' },
   { id: 4, title: 'семейные проблемы, конфликты, разводы' },
   { id: 5, title: 'проблемы с сексуальными, интимными отношениями' },
-  { id: 6, title: 'вина' },
-  { id: 7, title: 'ревность' },
-  { id: 8, title: 'неуверенность в себе (Негативная самооценка)' },
-  { id: 9, title: 'поиск себя, обретение смысла жизни' },
-  { id: 10, title: 'самореализация в профессиональной сфере, поиск подходящей работы' },
-  { id: 11, title: 'трудности принятия решений, сомнения' },
-  { id: 12, title: 'проблемы с достижением целей' },
-  { id: 13, title: 'вопросы связанные с воспитанием детей' },
-  { id: 14, title: 'поддержка беременных и молодых мам' },
-  { id: 15, title: 'перемены в жизни' },
-  { id: 16, title: 'травма' },
+  { id: 6, title: 'Вина, травма, ревность' },
+  { id: 7, title: 'неуверенность в себе (Негативная самооценка)' },
+  { id: 8, title: 'поиск себя, обретение смысла жизни' },
+  { id: 9, title: 'самореализация в профессиональной сфере, поиск подходящей работы' },
+  { id: 10, title: 'трудности принятия решений, сомнения' },
+  { id: 11, title: 'проблемы с достижением целей' },
+  { id: 12, title: 'вопросы связанные с воспитанием детей' },
+  { id: 13, title: 'поддержка беременных и молодых мам' },
+  { id: 14, title: 'перемены в жизни' },
 ]
 
-const handleScroll = (event: any) => {
-  // && (pageYOffset.value % 30 === 0 || pageYOffset.value % 30 === 0.5)
-  if (pageYOffset.value > window.pageYOffset) {
-    carouselRef.value.next()
-  } else {
-    carouselRef.value.prev()
-  }
-  pageYOffset.value = window.pageYOffset
-}
-
 onMounted(() => {
-  window.addEventListener('scroll', handleScroll)
-})
+  setInterval(() => {
+    if (!carouselRef.value) return
 
-onUnmounted (() => {
-  window.removeEventListener('scroll', handleScroll)
+    if (carouselRef.value.page === carouselRef.value.pages) {
+      return carouselRef.value.select(0)
+    }
+
+    carouselRef.value.next()
+  }, 3000)
 })
 </script>
 
@@ -118,8 +183,90 @@ onUnmounted (() => {
   margin: 0 auto;
 }
 
-.supportAs {
+.helping {
+  padding: 40px 20px;
+  &__grid {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(3, minmax(300px, 1fr));
+    @media (max-width: 1000px) {
+      grid-template-columns: repeat(2, minmax(300px, 1fr));
+    }
+    @media (max-width: 650px) {
+      grid-template-columns: repeat(1, minmax(300px, 1fr));
+    }
+    &-left {
+      font-size: 34px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      justify-content: center;
+    }
+    &-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      list-style: devanagari;
+    }
+    &-arrow {
+      height: 150px;
+      @media (max-width: 650px) {
+        display: none;
+      }
+    }
+    &-bottom {
+      display: flex;
+      justify-content: center;
+    }
+  }
+}
+
+.steps {
+  padding: 40px 20px;
+  background-color: #F4EEE1;
+  &__grid {
+    display: grid;
+    gap: 40px;
+    grid-template-columns: repeat(3, minmax(300px, 1fr));
+    @media (max-width: 1020px) {
+      gap: 20px;
+      grid-template-columns: repeat(1, minmax(300px, 1fr));
+    }
+    &-item {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      position: relative;
+    }
+    &-title {
+      font-size: 18px;
+    }
+    &-text {
+      color: #3D4E5C;
+    }
+    &-badge {
+      width: 30px;
+      height: 30px;
+      position: absolute;
+      background-color: #30545A;
+      border-radius: 50%;
+      left: -10px;
+      top: -10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+    }
+  }
+}
+
+.support {
   padding: 40px 0;
+  color: black;
+  background-color: white;
   &__title {
     font-size: 26px;
     padding-bottom: 40px;
@@ -135,7 +282,7 @@ onUnmounted (() => {
     &-item {
       padding: 5px 20px;
       margin: 0 10px;
-      background-color: #EAEAEB;
+      background-color: #F4EEE1;
       border-radius: 10px;
       width: 300px;
       text-align: center;
@@ -145,7 +292,7 @@ onUnmounted (() => {
       cursor: pointer;
       @media (max-width: 500px) {
         font-size: 14px;
-        width: 180px;
+        width: 220px;
         padding: 5px 10px;
       }
     }
@@ -153,6 +300,7 @@ onUnmounted (() => {
 }
 
 .content {
+  color: black;
   &__info {
     width: 100%;
     position: absolute;
@@ -199,10 +347,12 @@ onUnmounted (() => {
   }
 }
 
-.aboutUs {
+.about {
+  color: black;
   display: flex;
   align-items: center;
-  padding: 40px 20px;
+  padding: 20px 20px 40px 20px;
+  background-color: white;
   @media (max-width: 500px) {
     padding: 20px;
   }
@@ -211,6 +361,9 @@ onUnmounted (() => {
     max-width: 1200px;
     width: 100%;
     margin: 0 auto;
+  }
+  &__arrow {
+    height: 100px;
   }
   &__content {
     display: grid;
@@ -238,8 +391,12 @@ onUnmounted (() => {
   }
   &__title {
     font-size: 26px;
-    padding-bottom: 40px;
+    padding-bottom: 20px;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
     @media (max-width: 500px) {
       font-size: 22px;
       padding-bottom: 20px;
@@ -272,15 +429,4 @@ onUnmounted (() => {
   }
 }
 
-.partners {
-  margin: 20px 0;
-  &__title {
-    font-size: 26px;
-    text-align: center;
-    margin-bottom: 40px;
-    @media (max-width: 500px) {
-      font-size: 22px;
-    }
-  }
-}
 </style>

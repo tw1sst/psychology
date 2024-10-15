@@ -14,27 +14,38 @@
           </ul>
         </div>
 
-<!--        <div class="footer__feedback">-->
-<!--          <div class="footer__feedback-title">Оставьте заявку прямо сейчас!</div>-->
+        <div class="footer__up">
+          <div class="footer__up-button">
+            ☝
+          </div>
+        </div>
+      </div>
 
-<!--          <div class="footer__feedback-text">Мы свяжемся с вами максимально бытсро</div>-->
+      <div class="footer__social">
+        <div class="footer__social-medias">
+          <img :src="whatsappLogo" alt="whatsappLogo" class="footer__social-media">
 
-<!--          <input class="footer__feedback-form" type="tel" placeholder="Введите номер телефона" />-->
+          <img :src="telegramLogo" alt="telegramLogo" class="footer__social-media">
+        </div>
 
-<!--          <ui-button type="primary" text="Записаться сейчас" />-->
-<!--        </div>-->
+        <div class="footer__social-phone">
+          +7 (920) 360-26-54
+        </div>
       </div>
 
       <div class="footer__bottom">
         <div>Центр ментального здоровья в Ростове-на-Дону</div>
         <div>Я ОКЕЙ - Copyright © 2024</div>
       </div>
+
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import logo from '~/assets/img/logo.png'
+import telegramLogo from '~/assets/img/telegram.png'
+import whatsappLogo from '~/assets/img/whatsapp.png'
 
 interface menuItem {
   id: number,
@@ -84,11 +95,42 @@ const menuItems = ref<Array<menuItem>>([
 <style scoped lang="scss">
 .footer {
   height: auto;
-  background: white;
+  background: #F4EEE1;
   padding: 40px 100px;
   z-index: 999;
+  color: black;
   @media (max-width: 500px) {
     padding: 20px;
+  }
+  &__social {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &-phone {
+      font-size: 36px;
+    }
+    &-medias {
+      display: flex;
+      gap: 10px;
+    }
+    &-media {
+      width: 34px;
+      height: 34px;
+      opacity: 0.5;
+    }
+  }
+  &__up {
+    &-button {
+      width: 48px;
+      height: 48px;
+      background-color: rgba(48, 84, 90, 0.5);
+      border-radius: 5px;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
   &__container {
     max-width: 1200px;
@@ -147,7 +189,8 @@ const menuItems = ref<Array<menuItem>>([
   }
   &__logo {
     background: white;
-    width: 150px;
+    padding: 10px;
+    border-radius: 10px;
     &-img {
       display: block;
       width: 100px;
