@@ -185,6 +185,7 @@ onMounted(() => {
 
 .helping {
   padding: 40px 20px;
+  background-color: white;
   &__grid {
     display: grid;
     gap: 20px;
@@ -243,6 +244,7 @@ onMounted(() => {
     }
     &-title {
       font-size: 18px;
+      color: black;
     }
     &-text {
       color: #3D4E5C;
@@ -364,6 +366,9 @@ onMounted(() => {
   }
   &__arrow {
     height: 100px;
+    @media (max-width: 500px) {
+      height: 50px;
+    }
   }
   &__content {
     display: grid;

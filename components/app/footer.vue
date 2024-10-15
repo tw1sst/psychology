@@ -107,6 +107,9 @@ const menuItems = ref<Array<menuItem>>([
     display: flex;
     justify-content: space-between;
     align-items: center;
+    @media (max-width: 500px) {
+      flex-direction: column;
+    }
     &-phone {
       font-size: 36px;
     }
@@ -145,7 +148,6 @@ const menuItems = ref<Array<menuItem>>([
     gap: 20px;
     @media (max-width: 500px) {
       justify-content: center;
-      gap: 40px;
     }
   }
   &__feedback {
@@ -157,6 +159,7 @@ const menuItems = ref<Array<menuItem>>([
     }
     &-title {
       font-size: 22px;
+      color: black;
     }
     &-text {
       color: #30545A;
