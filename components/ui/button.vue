@@ -31,7 +31,7 @@ const buttonTypeClass = computed(() => {
   transition: 0.3s;
   cursor: pointer;
   @media (max-width: 500px) {
-    padding: 10px;
+    padding: 5px 15px;
   }
   &:hover {
     opacity: 0.8;

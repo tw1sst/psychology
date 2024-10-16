@@ -25,7 +25,8 @@
     <div class="about">
       <div class="about__container">
         <div class="about__title">
-          <span>Немного о нас:</span>
+          <span>Немного о нас</span>
+
           <img class="about__arrow" :src="Arrow2" alt="arrow2">
         </div>
 
@@ -37,13 +38,14 @@
           <div class="about__right">
             <div class="about__right-text">
               Мы – центр ментального здоровья "Я Окей".<br><br>
-
+              <UDivider /><br>
               Специализируемся на индивидуальной
               психотерапевтической практике в Ростове-на-Дону. Мы сочетаем научно обоснованное методы
               терапии, доброжелательное общение и непринужденную обстановку, чтобы осуществить
               индивидуальный подход.
               Наш квалифицированный тандем предлагает психологически услуги для взрослых. Независимо от
               того, ищете ли вы услуги для себя, любимого человека или сотрудников, мы поможем вам.
+              <br><br><UDivider />
             </div>
 
           </div>
@@ -52,9 +54,9 @@
     </div>
 
     <div class="support">
-      <div class="support__title">Осуществляем поддержку в следующих вопросах</div>
+      <div class="support__title">Кому будет полезно?</div>
 
-      <UCarousel ref="carouselRef" v-slot="{ item }" :items="supportAsItems" class="support__items">
+      <UCarousel ref="carouselRef" v-slot="{ item }" :items="useFullItems" class="support__items">
         <div class="support__items-item">{{ item.title }}</div>
       </UCarousel>
     </div>
@@ -133,6 +135,38 @@
       </div>
     </div>
 
+    <div class="questions">
+      <div class="container">
+        <div class="about__title">
+          <span>Часто задаваемые вопросы</span>
+        </div>
+
+        <UAccordion
+          class="questions__list"
+          :items="questions"
+        >
+          <template #default="{ item, index, open }">
+            <UButton class="questions__button">
+              <span class="truncate">{{ index + 1 }}. {{ item.label }}</span>
+
+              <template #trailing>
+                <UIcon
+                    name="i-heroicons-chevron-right-20-solid"
+                    class="w-5 h-5 ms-auto transform transition-transform duration-200"
+                    :class="[open && 'rotate-90']"
+                />
+              </template>
+            </UButton>
+          </template>
+
+          <template #item="{ item }">
+            <p class="questions__content">
+              {{ item.content }}
+            </p>
+          </template>
+        </UAccordion>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -162,6 +196,17 @@ const supportAsItems = [
   { id: 14, title: 'перемены в жизни' },
 ]
 
+const useFullItems = [
+  { id: 1, title: 'Тем, кто хочет научиться лучше управлять эмоциями' },
+  { id: 2, title: 'Людям на пути к личностному росту' },
+  { id: 3, title: 'Тем, кто хочет улучшить качество своей жизни' },
+  { id: 4, title: 'Людям, стремящимися с изменениями' },
+  { id: 5, title: 'Семьям и парам, стремящимися к улучшению отношений' },
+  { id: 6, title: 'Людям, испытывающим творческие блоки' },
+  { id: 7, title: 'Слушателям своих внутренних переживаний' },
+  { id: 8, title: 'Тем, кто ищет поддержку в принятии решений' },
+]
+
 onMounted(() => {
   setInterval(() => {
     if (!carouselRef.value) return
@@ -173,6 +218,33 @@ onMounted(() => {
     carouselRef.value.next()
   }, 3000)
 })
+
+const questions = [
+  {
+    label: 'Проводите ли вы консультации очно и онлайн?',
+    content: 'Да! У нас есть кабинет. Мы предлагаем онлайн встречи для клиентов со всего мира.'
+  },
+  {
+    label: 'Сколько длятся сеансы психотерапии?',
+    content: 'Наша стандартная продолжительность сеанса - 60 минут. При необходимости мы также предлагаем 30-минутные, и 90-минутные сеансы.'
+  },
+  {
+    label: 'Как часто я встречаюсь со своим психотерапевтом?',
+    content: 'Мы выяснили, что большинство клиентов добиваются наибольшего успеха при еженедельной психотерапии. После курса терапии клиенты могут переходит в режим поддерживающих встреч раз в две недели, раз в месяц.'
+  },
+  {
+    label: 'Как мне узнать, какой терапевт в "Я ОКЕЙ" подходит мне больше всего?',
+    content: 'Изучите информацию о каждом из наших терапевтов, чтобы узнать, какой из них подходит именно вам. Если вы не уверены на 100%, запишитесь на бесплатную 15 минутную консультацию.'
+  },
+  {
+    label: 'Каковы ваши правила отмены приема?',
+    content: 'Если вам необходимо отменить или перенести прием, пожалуйста, сообщите об этом своему терапевту как можно скорее. Необходимо уведомить терапевта за 24 часа, чтобы избежат взимания платы за отмену сеанса в размере полной стоимости запланированной встречи.'
+  },
+  {
+    label: 'Какие формы оплаты вы принимаете?',
+    content: 'Мы принимаем наличный, безналичный расчет, а также перевод.'
+  }
+]
 </script>
 
 <style scoped lang="scss">
@@ -181,6 +253,26 @@ onMounted(() => {
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
+}
+
+.questions {
+  padding: 40px 20px;
+  background-color: white;
+  &__list {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+  }
+  &__button {
+    height: 41px;
+    background-color: #F4EEE2;
+    color: black;
+  }
+  &__content {
+    font-size: 16px;
+    color: #30545A;
+    padding-top: 20px;
+  }
 }
 
 .helping {
@@ -195,6 +287,7 @@ onMounted(() => {
     }
     @media (max-width: 650px) {
       grid-template-columns: repeat(1, minmax(300px, 1fr));
+      gap: 10px;
     }
     &-left {
       font-size: 34px;
@@ -207,7 +300,10 @@ onMounted(() => {
       display: flex;
       flex-direction: column;
       gap: 10px;
-      list-style: devanagari;
+      list-style: outside;
+      @media (max-width: 650px) {
+        margin: 0 20px;
+      }
     }
     &-arrow {
       height: 150px;
@@ -282,7 +378,7 @@ onMounted(() => {
     display: flex;
     gap: 20px;
     &-item {
-      padding: 5px 20px;
+      padding: 10px 20px;
       margin: 0 10px;
       background-color: #F4EEE1;
       border-radius: 10px;
@@ -310,6 +406,9 @@ onMounted(() => {
     display: flex;
     justify-content: center;
     left: 0;
+    @media (max-width: 500px) {
+      top: 200px;
+    }
     &-logo {
       max-height: 200px;
     }
@@ -388,7 +487,7 @@ onMounted(() => {
     display: flex;
     justify-content: center;
     &-person {
-      max-width: 500px;
+      max-width: 550px;
       width: 100%;
       height: 100%;
       border-radius: 10px;

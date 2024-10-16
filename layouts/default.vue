@@ -1,23 +1,33 @@
 <template>
   <div>
-    <app-header />
+    <loading-page v-if="loading" />
 
-    <div class="slot">
-      <slot/>
+    <div v-else>
+      <app-header />
+
+      <div class="slot">
+        <slot/>
+      </div>
+
+      <app-footer />
     </div>
-
-    <app-footer />
   </div>
 </template>
 
-<style scoped lang="scss">
+<script setup lang="ts">
+import { ref } from 'vue'
+const loading = ref<boolean>(true)
 
+onMounted(async () => {
+  await nextTick(() => {
+    loading.value = false
+  })
+})
+</script>
+
+<style scoped lang="scss">
 .slot {
   margin-top: 50px;
   display: block;
 }
-
 </style>
-
-<script setup lang="ts">
-</script>

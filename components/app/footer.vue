@@ -121,6 +121,11 @@ const menuItems = ref<Array<menuItem>>([
       width: 34px;
       height: 34px;
       opacity: 0.5;
+      transition: 0.3s;
+      &:hover {
+        opacity: 1;
+        cursor: pointer;
+      }
     }
   }
   &__up {
@@ -180,14 +185,19 @@ const menuItems = ref<Array<menuItem>>([
   }
   &__nav {
     display: flex;
-    gap: 20px;
+    gap: 40px;
     flex-wrap: wrap;
     padding: 20px 0;
     @media (max-width: 500px) {
       justify-content: center;
+      gap: 20px;
     }
     &-item {
       cursor: pointer;
+      transition: 0.3s;
+      &:hover {
+        color: #3D4E5C;
+      }
     }
   }
   &__logo {
@@ -205,6 +215,7 @@ const menuItems = ref<Array<menuItem>>([
     display: flex;
     justify-content: space-between;
     align-items: center;
+    color: #3D4E5C;
     @media (max-width: 500px) {
       justify-content: center;
       flex-direction: column;

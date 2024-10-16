@@ -117,6 +117,7 @@ const menuItems = ref<Array<menuItem>>([
     display: flex;
     align-items: center;
     height: 100%;
+    color: black;
     @media (max-width: 900px) {
       display: none;
     }
