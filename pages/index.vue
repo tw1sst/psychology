@@ -38,14 +38,12 @@
           <div class="about__right">
             <div class="about__right-text">
               Мы – центр ментального здоровья "Я Окей".<br><br>
-              <UDivider /><br>
               Специализируемся на индивидуальной
               психотерапевтической практике в Ростове-на-Дону. Мы сочетаем научно обоснованное методы
               терапии, доброжелательное общение и непринужденную обстановку, чтобы осуществить
               индивидуальный подход.
               Наш квалифицированный тандем предлагает психологически услуги для взрослых. Независимо от
               того, ищете ли вы услуги для себя, любимого человека или сотрудников, мы поможем вам.
-              <br><br><UDivider />
             </div>
 
           </div>
@@ -68,7 +66,7 @@
             <div class="steps__grid-item">
               <div class="steps__grid-badge">1</div>
 
-              <span class="steps__grid-title">Посетите свою первую консультацию</span>
+              <span class="steps__grid-title">Подберите свою первую консультацию</span>
 
               <span class="steps__grid-text">Выберите психолога с котором хотели бы работать.</span>
             </div>
@@ -135,6 +133,42 @@
       </div>
     </div>
 
+    <div class="contact container">
+      <div class="contact__img">
+        <img :src="Group3" alt="Contact group">
+      </div>
+
+      <div class="contact__form">
+        <div>
+          <div class="contact__form-title">
+            Оставьте заявку на своей первый сеанс прямо сейчас
+          </div>
+
+          <div class="contact__form-text">
+            Не откладывайте заботу о себе на потом! Заполните заявку на первый сеанс, и начните свой путь к пониманию, гармонии и личностному росту.
+          </div>
+        </div>
+
+        <div class="contact__form-center">
+          <div>
+            <label class="contact__form-label">Введите ваше имя</label>
+            <UInput placeholder="Ваше имя" style="height: 41px;" />
+          </div>
+
+          <div>
+            <label class="contact__form-label">Введите ваш номер телефона</label>
+            <UInput placeholder="+7 (920) 360-26-54" style="height: 41px;" />
+          </div>
+
+          <div>
+            <UCheckbox label="Я соглашаюсь на обработку моих персональных данных" />
+          </div>
+        </div>
+
+        <ui-button type="primary" text="Записаться на бесплатный сеанс" />
+      </div>
+    </div>
+
     <div class="questions">
       <div class="container">
         <div class="about__title">
@@ -175,26 +209,28 @@ import { ref } from 'vue'
 import BgVideo from '~/assets/img/bg-cover3.mp4'
 import Logo from '~/assets/img/logo.png'
 import Group1 from '~/assets/img/group1.jpg'
+import Group3 from '~/assets/img/group3.jpg'
 import Arrow1 from '~/assets/img/arrow1.jpg'
 import Arrow2 from '~/assets/img/arrow2.png'
+
 const carouselRef = ref()
 
-const supportAsItems = [
-  { id: 1, title: 'тревожные состояния' },
-  { id: 2, title: 'депрессия, подавленность, безвыходность, одиночество' },
-  { id: 3, title: 'избавление от созависимости' },
-  { id: 4, title: 'семейные проблемы, конфликты, разводы' },
-  { id: 5, title: 'проблемы с сексуальными, интимными отношениями' },
-  { id: 6, title: 'Вина, травма, ревность' },
-  { id: 7, title: 'неуверенность в себе (Негативная самооценка)' },
-  { id: 8, title: 'поиск себя, обретение смысла жизни' },
-  { id: 9, title: 'самореализация в профессиональной сфере, поиск подходящей работы' },
-  { id: 10, title: 'трудности принятия решений, сомнения' },
-  { id: 11, title: 'проблемы с достижением целей' },
-  { id: 12, title: 'вопросы связанные с воспитанием детей' },
-  { id: 13, title: 'поддержка беременных и молодых мам' },
-  { id: 14, title: 'перемены в жизни' },
-]
+// const supportAsItems = [
+//   { id: 1, title: 'тревожные состояния' },
+//   { id: 2, title: 'депрессия, подавленность, безвыходность, одиночество' },
+//   { id: 3, title: 'избавление от созависимости' },
+//   { id: 4, title: 'семейные проблемы, конфликты, разводы' },
+//   { id: 5, title: 'проблемы с сексуальными, интимными отношениями' },
+//   { id: 6, title: 'Вина, травма, ревность' },
+//   { id: 7, title: 'неуверенность в себе (Негативная самооценка)' },
+//   { id: 8, title: 'поиск себя, обретение смысла жизни' },
+//   { id: 9, title: 'самореализация в профессиональной сфере, поиск подходящей работы' },
+//   { id: 10, title: 'трудности принятия решений, сомнения' },
+//   { id: 11, title: 'проблемы с достижением целей' },
+//   { id: 12, title: 'вопросы связанные с воспитанием детей' },
+//   { id: 13, title: 'поддержка беременных и молодых мам' },
+//   { id: 14, title: 'перемены в жизни' },
+// ]
 
 const useFullItems = [
   { id: 1, title: 'Тем, кто хочет научиться лучше управлять эмоциями' },
@@ -255,6 +291,58 @@ const questions = [
   margin: 0 auto;
 }
 
+.contact {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 600px;
+  overflow: hidden;
+  background-color: #F4EEE2;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  &__img {
+    height: 600px;
+    & img {
+      object-fit: cover;
+      object-position: center center;
+      position: relative;
+      height: 100%;
+      width: 100%;
+    }
+  }
+  &__form {
+    background-color: #F4EEE2;
+    padding: 40px;
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    max-height: 600px;
+    justify-content: space-between;
+    @media (max-width: 500px) {
+      padding: 20px;
+    }
+    &-center {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    &-title {
+      font-size: 26px;
+      margin-bottom: 20px;
+    }
+    &-text {
+      color: #30545A;
+    }
+    &-input {
+      height: 41px;
+    }
+    &-label {
+      color: #30545A;
+      font-size: 14px;
+    }
+  }
+}
+
 .questions {
   padding: 40px 20px;
   background-color: white;
@@ -267,6 +355,7 @@ const questions = [
     height: 41px;
     background-color: #F4EEE2;
     color: black;
+    font-size: 16px;
   }
   &__content {
     font-size: 16px;
@@ -407,7 +496,8 @@ const questions = [
     justify-content: center;
     left: 0;
     @media (max-width: 500px) {
-      top: 200px;
+      top: 0;
+      height: 100vh;
     }
     &-logo {
       max-height: 200px;
@@ -429,6 +519,7 @@ const questions = [
       text-align: center;
       @media (max-width: 500px) {
         border-radius: 0;
+        max-height: 100%;
       }
     }
     &-text {
@@ -487,7 +578,7 @@ const questions = [
     display: flex;
     justify-content: center;
     &-person {
-      max-width: 550px;
+      max-width: 500px;
       width: 100%;
       height: 100%;
       border-radius: 10px;
