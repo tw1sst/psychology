@@ -18,6 +18,16 @@
               <ui-button type="primary" text="Записаться на бесплатный сеанс" />
             </div>
           </div>
+
+
+          <div class="content__info-bottom">
+            <div class="mouse-scroll">
+              <div class="mouse">
+                <div class="wheel"></div>
+              </div>
+              <div class="arrow"></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -61,6 +71,8 @@
 
     <div class="steps">
       <div class="container">
+        <div class="support__title">Готовы начать?</div>
+
         <div class="steps__grid">
           <div>
             <div class="steps__grid-item">
@@ -152,12 +164,12 @@
         <div class="contact__form-center">
           <div>
             <label class="contact__form-label">Введите ваше имя</label>
-            <UInput placeholder="Ваше имя" style="height: 41px;" />
+            <UInput class="contact__form-input" placeholder="Ваше имя" style="height: 41px;" />
           </div>
 
           <div>
             <label class="contact__form-label">Введите ваш номер телефона</label>
-            <UInput placeholder="+7 (920) 360-26-54" style="height: 41px;" />
+            <UInput class="contact__form-input" placeholder="+7 (920) 360-26-54" style="height: 41px;" />
           </div>
 
           <div>
@@ -201,6 +213,48 @@
         </UAccordion>
       </div>
     </div>
+
+    <div class="reviews">
+      <div class="container">
+        <div class="reviews__grid">
+          <div class="reviews__left">
+            <div class="reviews__left-text">
+              Отзывы наших клиентов, реальный опыт работы с психологами
+            </div>
+
+            <div class="reviews__left-actions">
+              <ui-button @click="carouselReviewsRef.prev()" type="primary" text="Назад" />
+
+              <ui-button @click="carouselReviewsRef.next()" type="primary-outlined" text="Дальше" />
+            </div>
+          </div>
+
+          <div class="reviews__right">
+            <UCarousel ref="carouselReviewsRef" class="reviews__items" v-slot="{ item }" :items="reviews">
+              <div class="reviews__items-item">
+                <div class="reviews__items-text">
+                  {{ item.text }}
+                </div>
+
+                <div class="reviews__items-bottom">
+                  <img class="reviews__items-avatar" :src="item.avatar" alt="avatar">
+
+                  <div>
+                    <div class="reviews__item-author">
+                      {{ item.author }}
+                    </div>
+
+                    <div class="reviews__items-subtext">
+                      {{ item.subtext }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </UCarousel>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -213,24 +267,26 @@ import Group3 from '~/assets/img/group3.jpg'
 import Arrow1 from '~/assets/img/arrow1.jpg'
 import Arrow2 from '~/assets/img/arrow2.png'
 
-const carouselRef = ref()
+import Man1 from 'assets/img/avatars/man1.jpg'
+import Man2 from 'assets/img/avatars/man2.jpg'
+import Man3 from 'assets/img/avatars/man3.jpg'
+import Woman1 from 'assets/img/avatars/woman1.jpg'
+import Woman2 from '~/assets/img/avatars/woman2.jpg'
+import Woman3 from '~/assets/img/avatars/woman3.jpg'
+import Woman4 from '~/assets/img/avatars/woman4.jpg'
+import Woman5 from '~/assets/img/avatars/woman5.jpg'
+import Woman6 from '~/assets/img/avatars/woman6.jpg'
 
-// const supportAsItems = [
-//   { id: 1, title: 'тревожные состояния' },
-//   { id: 2, title: 'депрессия, подавленность, безвыходность, одиночество' },
-//   { id: 3, title: 'избавление от созависимости' },
-//   { id: 4, title: 'семейные проблемы, конфликты, разводы' },
-//   { id: 5, title: 'проблемы с сексуальными, интимными отношениями' },
-//   { id: 6, title: 'Вина, травма, ревность' },
-//   { id: 7, title: 'неуверенность в себе (Негативная самооценка)' },
-//   { id: 8, title: 'поиск себя, обретение смысла жизни' },
-//   { id: 9, title: 'самореализация в профессиональной сфере, поиск подходящей работы' },
-//   { id: 10, title: 'трудности принятия решений, сомнения' },
-//   { id: 11, title: 'проблемы с достижением целей' },
-//   { id: 12, title: 'вопросы связанные с воспитанием детей' },
-//   { id: 13, title: 'поддержка беременных и молодых мам' },
-//   { id: 14, title: 'перемены в жизни' },
-// ]
+interface ReviewItem {
+  id: number;
+  text: string;
+  author: string;
+  subtext: string;
+  avatar: string;
+}
+
+const carouselRef = ref()
+const carouselReviewsRef = ref()
 
 const useFullItems = [
   { id: 1, title: 'Тем, кто хочет научиться лучше управлять эмоциями' },
@@ -243,17 +299,64 @@ const useFullItems = [
   { id: 8, title: 'Тем, кто ищет поддержку в принятии решений' },
 ]
 
-onMounted(() => {
-  setInterval(() => {
-    if (!carouselRef.value) return
-
-    if (carouselRef.value.page === carouselRef.value.pages) {
-      return carouselRef.value.select(0)
-    }
-
-    carouselRef.value.next()
-  }, 3000)
-})
+const reviews = ref<ReviewItem[]>([
+  {
+    id: 1,
+    text: "Благодаря поддержке психолога я смогла справиться с тревогой и наконец-то начать чувствовать себя уверенно в жизни. Очень благодарна за помощь!",
+    author: "Ольга М.",
+    subtext: "тревожность",
+    avatar: Woman1
+  },
+  {
+    id: 2,
+    text: "На консультациях мне помогли взглянуть на свои отношения по-новому. Наши с женой конфликты стали реже, а понимание лучше.",
+    author: "Александр П.",
+    subtext: "семейные проблемы",
+    avatar: Man1
+  },
+  {
+    id: 3,
+    text: "Сессии с психологом помогли мне преодолеть эмоциональное выгорание на работе. Теперь чувствую себя гораздо лучше и снова с энтузиазмом иду на работу!",
+    author: "Мария К.",
+    subtext: "выгорание на работе",
+    avatar: Woman2
+  },
+  {
+    id: 4,
+    text: "Я пришел с чувством внутренней пустоты и одиночества. После нескольких встреч осознал, что могу и должен работать над собой. Спасибо за верное направление!",
+    author: "Андрей С.",
+    subtext: "кризис самооценки",
+    avatar: Man2
+  },
+  {
+    id: 5,
+    text: "После долгого периода депрессии я нашла специалиста, который помог мне выйти из этого состояния. Ощущение, будто снова дышу полной грудью! ",
+    author: "Елена В.",
+    subtext: "депрессия",
+    avatar: Woman3
+  },
+  {
+    id: 6,
+    text: "Проработали с психологом мои детские травмы, которые мешали мне строить отношения. Теперь чувствую себя более гармонично и уверенно.",
+    author: "Анна Л.",
+    subtext: "прошлые травмы",
+    avatar: Woman4
+  },
+  {
+    id: 7,
+    text: "Я долго не могла разобраться в себе и своих целях, но с помощью специалиста смогла найти внутреннюю гармонию. Это был важный шаг в моей жизни!",
+    author: "Виктория Д.",
+    subtext: "поиск себя",
+    avatar: Woman5
+  },
+  {
+    id: 8,
+    text: "После развода было сложно пережить боль и разочарование, но консультации помогли восстановиться и начать новую жизнь.  ",
+    author: "Алина К.",
+    subtext: "развод и стресс",
+    avatar: Woman6
+  },
+])
 
 const questions = [
   {
@@ -281,6 +384,18 @@ const questions = [
     content: 'Мы принимаем наличный, безналичный расчет, а также перевод.'
   }
 ]
+
+onMounted(() => {
+  setInterval(() => {
+    if (!carouselRef.value) return
+
+    if (carouselRef.value.page === carouselRef.value.pages) {
+      return carouselRef.value.select(0)
+    }
+
+    carouselRef.value.next()
+  }, 3000)
+})
 </script>
 
 <style scoped lang="scss">
@@ -291,6 +406,139 @@ const questions = [
   margin: 0 auto;
 }
 
+.mouse-scroll {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.mouse {
+  width: 38px;
+  height: 60px;
+  border: 3px solid white;
+  border-radius: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  opacity: 0.8;
+}
+
+.wheel {
+  width: 6px;
+  height: 16px;
+  background-color: white;
+  border-radius: 4px;
+  animation: scroll 2s infinite;
+  margin-top: 8px;
+}
+
+/* Scroll animation */
+@keyframes scroll {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(8px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.arrow {
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid white;
+  border-bottom: 2px solid white;
+  transform: rotate(45deg);
+}
+
+.reviews {
+  padding: 20px;
+  @media (max-width: 750px) {
+    padding: 0;
+  }
+  &__grid {
+    display: grid;
+    grid-template-columns: 450px 1fr;
+    padding: 40px 0;
+    @media (max-width: 750px) {
+      grid-template-columns: 300px 1fr;
+    }
+    @media (max-width: 750px) {
+      grid-template-columns: 1fr;
+      gap: 20px;
+      padding: 20px 0;
+    }
+  }
+  &__left {
+    @media (max-width: 750px) {
+      padding: 0 20px;
+    }
+    &-text {
+      font-size: 34px;
+    }
+    &-actions {
+      display: flex;
+      gap: 20px;
+      margin-top: 20px;
+    }
+  }
+  &__right {
+    overflow: hidden;
+    border-radius: 10px;
+  }
+  &__items {
+    display: flex;
+    height: 100%;
+    &-avatar {
+      height: 48px;
+      width: 48px;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+    &-text {
+      font-size: 18px;
+    }
+    &-author {
+      font-size: 16px;
+    }
+    &-subtext {
+      font-size: 14px;
+      color: #3D4E5C;
+    }
+
+    &-bottom {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    &-item {
+      padding: 10px 20px;
+      margin: 0 10px;
+      background-color: #F4EEE1;
+      border-radius: 10px;
+      width: 400px;
+      height: 100%;
+      display: flex;
+      gap: 20px;
+      flex-direction: column;
+      justify-content: space-between;
+      cursor: pointer;
+      @media (max-width: 750px) {
+        margin-left: 20px;
+      }
+      @media (max-width: 500px) {
+        font-size: 14px;
+        width: 320px;
+      }
+    }
+  }
+}
+
 .contact {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -299,6 +547,7 @@ const questions = [
   background-color: #F4EEE2;
   margin-top: 20px;
   margin-bottom: 20px;
+  border-radius: 10px;
   &__img {
     height: 600px;
     & img {
@@ -345,17 +594,17 @@ const questions = [
 
 .questions {
   padding: 40px 20px;
-  background-color: white;
+  background-color: #F4EEE2;
   &__list {
     display: flex;
     gap: 20px;
     flex-direction: column;
   }
   &__button {
-    height: 41px;
-    background-color: #F4EEE2;
     color: black;
+    height: 41px;
     font-size: 16px;
+    background-color: white;
   }
   &__content {
     font-size: 16px;
@@ -366,7 +615,6 @@ const questions = [
 
 .helping {
   padding: 40px 20px;
-  background-color: white;
   &__grid {
     display: grid;
     gap: 20px;
@@ -419,17 +667,16 @@ const questions = [
       grid-template-columns: repeat(1, minmax(300px, 1fr));
     }
     &-item {
-      background-color: white;
       padding: 20px;
       border-radius: 10px;
       display: flex;
       flex-direction: column;
       gap: 20px;
       position: relative;
+      background-color: white;
     }
     &-title {
       font-size: 18px;
-      color: black;
     }
     &-text {
       color: #3D4E5C;
@@ -452,8 +699,6 @@ const questions = [
 
 .support {
   padding: 40px 0;
-  color: black;
-  background-color: white;
   &__title {
     font-size: 26px;
     padding-bottom: 40px;
@@ -487,17 +732,27 @@ const questions = [
 }
 
 .content {
-  color: black;
   &__info {
     width: 100%;
     position: absolute;
-    top: 15rem;
+    top: 100px;
+    height: 100vh;
+    flex-direction: column;
     display: flex;
     justify-content: center;
+    align-items: center;
     left: 0;
     @media (max-width: 500px) {
       top: 0;
       height: 100vh;
+    }
+    &-bottom {
+      padding: 40px 0;
+      @media (max-width: 500px) {
+        background-color: rgb(255, 255, 255, 0.7);
+        width: 100%;
+        padding: 20px 0;
+      }
     }
     &-logo {
       max-height: 200px;
@@ -544,7 +799,6 @@ const questions = [
   display: flex;
   align-items: center;
   padding: 20px 20px 40px 20px;
-  background-color: white;
   @media (max-width: 500px) {
     padding: 20px;
   }

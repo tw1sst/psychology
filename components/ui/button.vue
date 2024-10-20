@@ -25,11 +25,12 @@ const buttonTypeClass = computed(() => {
 <style scoped lang="scss">
 .button {
   border-radius: 5px;
-  padding: 10px 30px;
+  padding: 0 30px;
   font-size: 14px;
   white-space: nowrap;
   transition: 0.3s;
   cursor: pointer;
+  height: 40px;
   @media (max-width: 500px) {
     padding: 5px 15px;
   }

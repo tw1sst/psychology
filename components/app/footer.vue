@@ -15,9 +15,9 @@
         </div>
 
         <div class="footer__up">
-          <div class="footer__up-button">
+          <button @click="goTop" class="footer__up-button">
             ☝
-          </div>
+          </button>
         </div>
       </div>
 
@@ -90,6 +90,14 @@ const menuItems = ref<Array<menuItem>>([
     path: 'help'
   },
 ])
+
+const goTop = () => {
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: 'smooth'
+  });
+}
 </script>
 
 <style scoped lang="scss">
@@ -132,12 +140,13 @@ const menuItems = ref<Array<menuItem>>([
     &-button {
       width: 48px;
       height: 48px;
-      background-color: rgba(48, 84, 90, 0.5);
+      background-color: rgba(48, 84, 90, 1);
       border-radius: 5px;
       color: white;
       display: flex;
       justify-content: center;
       align-items: center;
+      cursor: pointer;
     }
   }
   &__container {
