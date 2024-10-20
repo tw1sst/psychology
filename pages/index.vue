@@ -251,6 +251,12 @@
                 </div>
               </div>
             </UCarousel>
+
+            <div class="reviews__left-actionsMobile">
+              <ui-button @click="carouselReviewsRef.prev()" type="primary" text="Назад" />
+
+              <ui-button @click="carouselReviewsRef.next()" type="primary-outlined" text="Дальше" />
+            </div>
           </div>
         </div>
       </div>
@@ -481,14 +487,28 @@ onMounted(() => {
     &-text {
       font-size: 34px;
     }
+    &-actionsMobile {
+      display: none;
+      @media (max-width: 750px) {
+        display: flex;
+        gap: 20px;
+        width: 100%;
+        margin: 20px;
+      }
+    }
     &-actions {
       display: flex;
       gap: 20px;
       margin-top: 20px;
+      @media (max-width: 750px) {
+        display: none;
+      }
     }
   }
   &__right {
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
     border-radius: 10px;
   }
   &__items {
