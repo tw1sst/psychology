@@ -126,15 +126,16 @@ const menuItems = ref<Array<menuItem>>([
       display: flex;
       align-items: center;
       padding: 0 20px;
-      transition: 0.3s;
+      transition: 0.2s;
       white-space: nowrap;
+      border-bottom: 3px solid white;
       @media (max-width: 1200px) {
         padding: 0 10px;
       }
       &:hover {
         opacity: 0.8;
         cursor: pointer;
-        border-bottom: 4px solid #3D4E5C;
+        border-bottom: 3px solid #3D4E5C;
       }
     }
   }

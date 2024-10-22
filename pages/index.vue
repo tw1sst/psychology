@@ -394,12 +394,18 @@ const questions = [
 onMounted(() => {
   setInterval(() => {
     if (!carouselRef.value) return
+    if (!carouselReviewsRef.value) return
 
     if (carouselRef.value.page === carouselRef.value.pages) {
       return carouselRef.value.select(0)
     }
 
+    if (carouselReviewsRef.value.page === carouselReviewsRef.value.pages) {
+      return carouselReviewsRef.value.select(0)
+    }
+
     carouselRef.value.next()
+    carouselReviewsRef.value.next()
   }, 3000)
 })
 </script>
@@ -538,7 +544,6 @@ onMounted(() => {
     }
     &-item {
       padding: 10px 20px;
-      margin: 0 10px;
       background-color: #F4EEE1;
       border-radius: 10px;
       width: 400px;
@@ -548,7 +553,9 @@ onMounted(() => {
       flex-direction: column;
       justify-content: space-between;
       cursor: pointer;
+      margin-right: 20px;
       @media (max-width: 750px) {
+        margin-right: 0;
         margin-left: 20px;
       }
       @media (max-width: 500px) {

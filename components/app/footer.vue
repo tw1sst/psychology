@@ -16,7 +16,7 @@
 
         <div class="footer__up">
           <button @click="goTop" class="footer__up-button">
-            ☝
+            ⬆
           </button>
         </div>
       </div>
@@ -138,15 +138,19 @@ const goTop = () => {
   }
   &__up {
     &-button {
-      width: 48px;
-      height: 48px;
-      background-color: rgba(48, 84, 90, 1);
+      width: 38px;
+      height: 38px;
+      border: 2px solid rgba(48, 84, 90, 1);
       border-radius: 5px;
-      color: white;
+      color: rgba(48, 84, 90, 1);
       display: flex;
       justify-content: center;
       align-items: center;
       cursor: pointer;
+      transition: 0.3s;
+      &:hover {
+        opacity: 0.8;
+      }
     }
   }
   &__container {
@@ -213,6 +217,10 @@ const goTop = () => {
     background: white;
     padding: 10px;
     border-radius: 10px;
+    display: none;
+    @media (max-width: 750px) {
+      display: none;
+    }
     &-img {
       display: block;
       width: 100px;
