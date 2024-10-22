@@ -16,7 +16,7 @@
 
         <div class="footer__up">
           <button @click="goTop" class="footer__up-button">
-            ⬆
+            👆
           </button>
         </div>
       </div>
@@ -140,7 +140,7 @@ const goTop = () => {
     &-button {
       width: 38px;
       height: 38px;
-      border: 2px solid rgba(48, 84, 90, 1);
+      font-size: 32px;
       border-radius: 5px;
       color: rgba(48, 84, 90, 1);
       display: flex;
